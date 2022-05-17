@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "api/users")
 public class UserController {
 
@@ -22,7 +23,8 @@ public class UserController {
 
     @GetMapping //Method GET
     public List<Users> getStudents() {
-        return userService.getStudents();
+        System.out.println("getUsers");
+        return userService.getUsers();
     }
 
     @PostMapping//Method Post

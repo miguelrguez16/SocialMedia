@@ -23,7 +23,7 @@ public class UserService {
     }
 
 
-    public List<Users> getStudents() {
+    public List<Users> getUsers() {
         return userRepository.findAll();
     }
 

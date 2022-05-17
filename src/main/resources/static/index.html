@@ -10,9 +10,14 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="main.js"></script>
 
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
+<h1> SOCIAL NETWORK</h1>
+
 <form id="form">
+    <h2> Nuevo usuario:</h2>
     <label for="name">Name: </label>
     <input type="text" id="name" name="name" id="name">
     <label for="last">Last Name: </label>
@@ -20,11 +25,18 @@
     <label for="email">Email: </label>
     <input type="email" id="email" name="email" id="email">
     <label for="date">Date: </label>
-    <input type="date" id="date" name="date" placeholder="date (yyyy-mm-dd)" id="date">
+    <input type="date" id="date" name="date" placeholder="date (yyyy-mm-dd)" id="date"><br/>
     <input type="submit" value="SAVE" id="save">
     <input type="reset" value="RESET">
 </form>
 
-
+<table id="tabla">
+    <caption> Lista de usuarios</caption>
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+</table>
 </body>
 </html>

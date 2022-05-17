@@ -1,11 +1,31 @@
 "use strict";
 
 
-$(document).ready( ()=> {
+
+async function fetchAsync (url) {
+    let response = await fetch(url);
+    //console.log(data.at(4));
+    return await response.json();
+}
+
+$(document).ready(() => {
     console.log("READY");
 
+    fetchAsync("http://localhost:8080/api/users")
+        .then((data) =>{
+            for (let i = 0; i < data.length; i++) {
+                const user = data.at(i);
+                console.log(user.name);
+                $("#tabla tbody").append("<tr>"
+                    + "<td>" + user.name + "</td>"
+                    + "<td>" + user.last + "</td>"
+                    + "<td>" + user.email + "</td>"
 
-    $("#form").submit((event)=>{
+                    +"</tr>");
+            }
+        })
+
+    $("#form").submit((event) => {
         event.preventDefault();
 
         var newUser = {
@@ -20,7 +40,7 @@ $(document).ready( ()=> {
 
         $.ajax({
             method: "POST",
-            url: "api/users",
+            url: "http://localhost:8080/api/users",
             data: JSON.stringify(newUser),
             contentType: "application/json",
             beforeSend: function () {
@@ -34,6 +54,9 @@ $(document).ready( ()=> {
             },
             timeout: 10000, // tiempo maximo de respuesta
         });
+
+
+
 
     });
 });
