@@ -80,11 +80,11 @@ public class Users {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", last='" + last + '\'' +
-                ", email='" + email + '\'' +
-                ", dob=" + date +
+                "id=" + this.getId() +
+                ", name='" + this.getName() + '\'' +
+                ", last='" + this.getLast() + '\'' +
+                ", email='" + this.getEmail() + '\'' +
+                ", dob=" + this.getDate() +
                 '}';
     }
 }
