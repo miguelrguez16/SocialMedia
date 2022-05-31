@@ -10,26 +10,27 @@ import java.time.LocalDate;
 public class Users {
     @Id
     private ObjectId id;
-    private String name, last, email;
+    private String name, email, username, password;
     private LocalDate date; //date of birth
 
     public Users() {
     }
 
-    public Users(ObjectId id, String name, String last,String email, LocalDate date) {
+    public Users(ObjectId id, String name,  String email, String username, String password, LocalDate date) {
         this.id = id;
         this.name = name;
-        this.last = last;
-        this.date = date;
         this.email = email;
+        this.username = username;
+        this.password = password;
+        this.date = date;
     }
 
-    public Users(String name, String last,String email, LocalDate date) {
+    public Users(String name, String email, String username, String password, LocalDate date) {
         this.name = name;
-        this.last = last;
-        this.date = date;
         this.email = email;
-
+        this.username = username;
+        this.password = password;
+        this.date = date;
     }
 
     public ObjectId getId() {
@@ -46,14 +47,6 @@ public class Users {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLast() {
-        return last;
-    }
-
-    public void setLast(String last) {
-        this.last = last;
     }
 
     public LocalDate getDate() {
@@ -74,7 +67,23 @@ public class Users {
 
     @Override
     public int hashCode() {
-        return this.getName().hashCode() + this.getName().hashCode() * this.getLast().hashCode();
+        return this.getName().hashCode() + this.getName().hashCode();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -82,8 +91,8 @@ public class Users {
         return "User{" +
                 "id=" + this.getId() +
                 ", name='" + this.getName() + '\'' +
-                ", last='" + this.getLast() + '\'' +
                 ", email='" + this.getEmail() + '\'' +
+                ", username='" + this.getUsername() + '\'' +
                 ", dob=" + this.getDate() +
                 '}';
     }

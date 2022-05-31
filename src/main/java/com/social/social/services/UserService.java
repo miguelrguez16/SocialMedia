@@ -3,6 +3,7 @@ package com.social.social.services;
 import com.mongodb.client.MongoCollection;
 import com.social.social.entities.Users;
 import com.social.social.repositories.UserRepository;
+import com.social.social.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +29,15 @@ public class UserService {
     }
 
     public void addNewUser(Users user) {
-        Optional<Users> usersOptional =
-                userRepository.findUserByEmail(user.getEmail());
-        if (usersOptional.isPresent()) throw new IllegalStateException("email already taken");
-
-        /*Document userToSave = new Document("_id", new ObjectId());
-            userToSave.append("name", user.getName());
-            userToSave.append("last", user.getLast());
-            userToSave.append("email", user.getEmail());
-            userToSave.append("date",user.getDate());*/
-
+        if(emailExists(user.getEmail())) throw new IllegalStateException("email already taken");
         if(user.getId()==null) user.setId(new ObjectId());
         System.out.println(user);
-
+        user.setPassword(Util.getSHA256(user.getPassword()));
         userRepository.save(user);
+    }
+
+    public Boolean emailExists(String email){
+        Optional<Users> usersEmail = userRepository.findUserByEmail(email);
+        return usersEmail.isPresent();
     }
 }

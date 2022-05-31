@@ -14,27 +14,29 @@ public class Posts {
 
     private String title, text;
 
-    private ObjectId userId;
+    private String emailUser;
 
     private LocalDate datePosted;
 
 
     public Posts() { }
 
-    public Posts(ObjectId id, String title, String text, ObjectId userId, LocalDate datePosted) {
+    public Posts(ObjectId id, String title, String text, String emailUser, LocalDate datePosted) {
         this.id = id;
         this.title = title;
         this.text = text;
-        this.userId = userId;
+        this.emailUser = emailUser;
         this.datePosted = datePosted;
     }
 
-    public Posts(String title, String text, ObjectId userId, LocalDate datePosted) {
+    public Posts(String title, String text, String emailUser, LocalDate datePosted) {
         this.title = title;
         this.text = text;
-        this.userId = userId;
+        this.emailUser = emailUser;
         this.datePosted = datePosted;
     }
+
+
 
     public ObjectId getId() {
         return id;
@@ -60,12 +62,12 @@ public class Posts {
         this.text = text;
     }
 
-    public ObjectId getUserId() {
-        return userId;
+    public String getEmailUser() {
+        return emailUser;
     }
 
-    public void setUserId(ObjectId userId) {
-        this.userId = userId;
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
     }
 
     public LocalDate getDatePosted() {
@@ -82,7 +84,7 @@ public class Posts {
                 "id=" + this.getId() +
                 ", title='" + this.getTitle() + '\'' +
                 ", text='" + this.getText() + '\'' +
-                ", userId=" + this.getUserId() +
+                ", userId=" + this.getEmailUser() +
                 ", datePosted=" + this.getDatePosted() +
                 '}';
     }
